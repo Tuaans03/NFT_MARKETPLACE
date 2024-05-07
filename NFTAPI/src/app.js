@@ -6,6 +6,12 @@ const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const compression = require('compression');
 const cors = require('cors');
+const { config } = require("dotenv");
+const{requestRateLimiter} = require('./middlewares/rateLimiter');
+const routes = require('./routes/v1');
+const {errorConverter,errorHandler} = require('./middlewares/error')
+const ApiError = require('./utils/ApiError');
+const httpStatus = require("http-status");
 
 const app = express();
 
@@ -38,4 +44,19 @@ app.use(cors());
 app.options('*',cors());
 
 
+//limit repeated failed requests to auth endpoints
+if(config.env === 'production'){
+  app.use('/api/v1/auth',requestRateLimiter);
+}
 
+app.use('/api/v1',routes);
+
+app.use((req,res,next) =>{
+  next(new ApiError(httpStatus.NOT_FOUND,'Not found'));
+});
+
+app.use(errorConverter);
+
+app.use(errorHandler);
+
+module.exports = app;

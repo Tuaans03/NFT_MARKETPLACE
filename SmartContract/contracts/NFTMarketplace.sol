@@ -24,6 +24,7 @@ contract NFTMarketplace is IERC721Receiver, IERC1155Receiver {
     IERC1155 private erc1155Token;
     IERC20 private erc20Token;
 
+    
     struct MarketItem {
         uint256 tokenId;
         address payable seller;

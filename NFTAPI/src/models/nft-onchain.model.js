@@ -30,5 +30,5 @@ const nftOnChainSchema = mongoose.Schema({
 });
 
 nftOnChainSchema.plugin(toJSON);
-const NftOnChainSchema = mongoose.model('NftOnChainSchema',nftOnChainSchema);
-module.exports = NftOnChainSchema;
+const NftOnChain = mongoose.model('NftOnChainSchema',nftOnChainSchema);
+module.exports = NftOnChain;

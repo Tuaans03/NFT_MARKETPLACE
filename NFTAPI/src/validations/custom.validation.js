@@ -7,9 +7,9 @@ const objectId = (value, helpers) => {
   return value;
 };
 
-const email = (value, helers) => {
+const email = (value, helpers) => {
   if (validator.isEmail(value)) {
-    return helpers.message("Địa chỉ email khoogn hợp lệ");
+    return helpers.message("Địa chỉ email không hợp lệ");
   }
   return value;
 };

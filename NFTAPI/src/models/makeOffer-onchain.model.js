@@ -27,6 +27,10 @@ const makeOfferOnChainSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    isClaimed: {
+      type: Boolean,
+      default: false,
+    },
     is_accept: {
       type: Boolean,
       required: true,

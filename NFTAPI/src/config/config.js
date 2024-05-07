@@ -101,4 +101,8 @@ module.exports = {
     password: envVars.ADMIN_PASSWORD,
     fullname: envVars.ADMIN_FULLNAME,
   },
+  onchain:{
+    block_number_start: envVars.BLOCK_NUMBER_START,
+    network_rpc_url: envVars.NETWORK_RPC,
+  }
 };
